@@ -1,32 +1,83 @@
 'use strict';
-const profile = {
-	username: "Jacob",
-	playTime: 300,
-	changeUsername(newName) {
-		this.username = newName;
-	},
-	updatePlayTime(hours) {
-		this.playTime += hours;
-	},
-	getInfo() {
-		return `${profile.username} has ${profile.playTime} active hours!`;
-	}
-};
+const sortByDescendingFriendCount = (users) => {
+	const userCountdownFriend = users.toSorted((firstUser, secondUser) => secondUser.friends.length - firstUser.friends.length);
+	return userCountdownFriend;
+}
 
+console.log(
+	sortByDescendingFriendCount([
+		{
+			name: "Moore Hensley",
+			friends: ["Sharron Pace"],
+			gender: "male"
+		},
+		{
+			name: "Sharlene Bush",
+			friends: ["Briana Decker", "Sharron Pace"],
+			gender: "female"
+		},
+		{
+			name: "Ross Vazquez",
+			friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
+			gender: "male"
+		},
+		{
+			name: "Elma Head",
+			friends: ["Goldie Gentry", "Aisha Tran"],
+			gender: "female"
+		},
+		{
+			name: "Carey Barr",
+			friends: ["Jordan Sampson", "Eddie Strong"],
+			gender: "male"
+		},
+		{
+			name: "Blackburn Dotson",
+			friends: ["Jacklyn Lucas", "Linda Chapman"],
+			gender: "male"
+		},
+		{
+			name: "Sheree Anthony",
+			friends: ["Goldie Gentry", "Briana Decker"],
+			gender: "female"
+		}
+	])
+);
+// [
+//   {
+//     name: "Ross Vazquez",
+//     friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
+//     gender: "male"
+//   },
+//   {
+//     name: "Sharlene Bush",
+//     friends: ["Briana Decker", "Sharron Pace"],
+//     gender: "female"
+//   },
+//   {
+//     name: "Elma Head",
+//     friends: ["Goldie Gentry", "Aisha Tran"],
+//     gender: "female"
+//   },
+//   {
+//     name: "Carey Barr",
+//     friends: ["Jordan Sampson", "Eddie Strong"],
+//     gender: "male"
+//   },
+//   {
+//     name: "Blackburn Dotson",
+//     friends: ["Jacklyn Lucas", "Linda Chapman"],
+//     gender: "male"
+//   },
+//   {
+//     name: "Sheree Anthony",
+//     friends: ["Goldie Gentry", "Briana Decker"],
+//     gender: "female"
+//   },
+//   {
+//     name: "Moore Hensley",
+//     friends: ["Sharron Pace"],
+//     gender: "male"
+//   }
+// ]
 
-/*
-Доповни об’єкт profile методами для роботи з його властивостями.
-
-Метод changeUsername(newName) повинен приймати рядок(нове ім’я) в параметр newName та змінювати значення властивості username на нове.Нічого не повертає.
-Метод updatePlayTime(hours) повинен приймати число(кількість годин) у параметр hours та збільшити на нього значення властивості playTime.Нічого не повертає.
-Метод getInfo() має повертати рядок формату < Username > has < amount > active hours!, де < Username > — це ім’я профілю, а < amount > — кількість ігрових годин.
-
-*/
-
-console.log(profile.getInfo()); // "Jacob has 300 active hours!"
-
-profile.changeUsername("Marco");
-console.log(profile.getInfo()); // "Marco has 300 active hours!"
-
-profile.updatePlayTime(20);
-console.log(profile.getInfo()); // "Marco has 320 active hours!"
